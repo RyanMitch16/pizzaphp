@@ -62,12 +62,12 @@
 					<input type="submit" value="Submit">
 				</form>
 
-				<form>
+				<form method="post" action=<?php echo '"?_table=' . $_GET["_table"] . '"'?>>
 					<?php 
 						if (!empty($_GET["_table"])) {
 
 							// Check if a value was inserted into the table
-							if (!empty($_GET["_inserted"])) {
+							if (!empty($_POST["_inserted"])) {
 								$sql_values = "";
 								$sql_columns = "";
 
@@ -88,9 +88,9 @@
 										|| strpos($column[1], "double") !== false
 										|| strpos($column[1], "decimal") !== false) {
 
-										$sql_values .= $_GET[$column[0]];
+										$sql_values .= $_POST[$column[0]];
 									} else {
-										$sql_values .= "'" . $_GET[$column[0]] . "'";
+										$sql_values .= "'" . $_POST[$column[0]] . "'";
 									}
 								}
 
@@ -119,7 +119,6 @@
 							}
 
 							// Make sure the table param is kept when submitted
-							echo '<input type="hidden" name="_table" value="' . $_GET["_table"] . '">';
 							echo '<input type="hidden" name="_inserted" value="true">';
 
 							// Create the submit button
