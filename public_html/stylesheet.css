@@ -2,49 +2,56 @@ html {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
-/*SIDEBAR*/
-table {
+.TableDisplayerBody {
 	height: 100%; 
 	margin: 0; 
 	padding: 0; 
-	width:100%;
+	width: 100%;
 }
 
-select {
+.LeftColumn {
+	background-color: #FFE5B4; 
+	padding: 30px; 
+	width: 30%;
+}
+
+.LeftColumn input {
+	padding: 5x 10px;
+}
+
+.LeftColumn select {
 	background-color: #F4F4F4;
 	border: none;
-	font-family: 'Josefin Sans', sans-serif;
 	font-size: 14px;
 	height: 29px;
 	padding: 5px; /* If you add too much padding here, the options won't show in IE */
 	width: 268px;
 }
 
-input {
+.LeftColumn input {
 	padding: 5x 10px;
 }
 
-tr {
-	margin: 0; 
-	padding: 0;
-}
 
-#table-displayer {
-	background-color: #F6BDD1; 
-	padding: 30px; 
-	width:30%;
-}
-
-#table {
+.RightColumn {
 	background-color: #F4F4F4; 
 	padding: 30px; 
 	width:70%;
 }
 
-#data-table {
-	width:100%;
+.DataTable th {
+	width: 150px;
 }
 
-#data-row {
-	background-color: #F6BDD1;
+.DataTable td {
+	padding: 3px;
+	width: 150px;
+}
+
+.DataTableRow {
+	background-color: #FFEECE;
+}
+
+.DataTableRow:nth-child(even) {
+	background-color: #FFFFFF;
 }
