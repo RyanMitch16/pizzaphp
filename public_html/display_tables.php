@@ -71,6 +71,9 @@
 					<?php 
 						if (!empty($_GET["_table"])) {
 
+							// Write the heading 
+							echo "<h3>Insert into the " . $_GET["_table"] . " table</h3>";
+
 							// Check if a value was inserted into the table
 							if (!empty($_POST["_inserted"])) {
 								$sql_values = "";
@@ -110,9 +113,6 @@
 
 								echo '<div style="background-color: green">Entry inputted successfully</div>';
 							}
-					
-							// Write the heading 
-							echo "<h3>Insert into the " . $_GET["_table"] . " table</h3>";
 
 							// Create the inputs for each column of the table
 							foreach ($table_description as $column) {
@@ -137,7 +137,7 @@
 				<?php if (!empty($_GET["_table"])) {
 
 						// Write the heading
-						echo "<h1>Displaying the " . $_GET["_table"] . "table</h1>";
+						echo "<h1>Displaying the " . $_GET["_table"] . " table</h1>";
 
 						echo'<div display:table>';
 						// Create the headers of the table
