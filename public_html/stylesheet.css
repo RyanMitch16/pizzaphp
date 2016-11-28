@@ -1,0 +1,50 @@
+html {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+/*SIDEBAR*/
+table {
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	width:100%;
+}
+
+select {
+	background-color: #F4F4F4;
+	border: none;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 14px;
+	height: 29px;
+	padding: 5px; /* If you add too much padding here, the options won't show in IE */
+	width: 268px;
+}
+
+input {
+	padding: 5x 10px;
+}
+
+tr {
+	margin: 0; 
+	padding: 0;
+}
+
+#table-displayer {
+	background-color: #F6BDD1; 
+	padding: 30px; 
+	width:30%;
+}
+
+#table {
+	background-color: #F4F4F4; 
+	padding: 30px; 
+	width:70%;
+}
+
+#data-table {
+	width:100%;
+}
+
+#data-row {
+	background-color: #F6BDD1;
+}

@@ -16,9 +16,10 @@ if (!$db_selected) {
 }
 
 // Create all the tables for the database
-$sql = "Create table Franchise (franchise_id int, address varchar(256)); " .
+$sql = "Drop table Franchise, FranchiseSchedule, Employee, EmployeeSchedule, Dish, Allergens, Coupon, OfferedCoupons, Menu, MenuDays, MenuDishes;" .
+	"Create table Franchise (franchise_id int, address varchar(256), PRIMARY KEY (franchise_id)); " .
 	 "Create table FranchiseSchedule (franchise_id int, fs_day char(3), fs_start_hour int, fs_end_hour int); " .
-	 "Create table Employee (employee_id int, fname varchar(25), lname varchar(25), wage int, franchise_id int); " .
+	 "Create table Employee (employee_id int, fname varchar(25), lname varchar(25), wage int, franchise_id int PRIMARY KEY (employee_id)); " .
 	 "Create table EmployeeSchedule (employee_id int, es_day char(3), es_start_hour int, es_end_hour int); " .
 	 "Create table Dish (dname varchar(64), price int, recipe int, calories int); " .
 	 "Create table Allergens (dname varchar(64), aname varchar(64)); " .

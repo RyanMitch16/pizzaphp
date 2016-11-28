@@ -34,7 +34,7 @@
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<title>Table Displayer</title>
+	<title>Query Tables</title>
 </head>
 <body>
 	<table>
@@ -42,22 +42,13 @@
 
 			<td id="table-displayer" valign="top">
 				<form>
-					<h1>Table Displayer</h1>
-					<p> Choose a table to be displayed: </p>
+					<h1>Query Tables</h1>
+					<p> Choose a query to run: </p>
 
 					<!--The database selctor dropdown-->
 					<select name="_table">
-					  <option value="Franchise">Franchise</option>
-					  <option value="FranchiseSchedule">FranchiseSchedule</option>
-					  <option value="Employee">Employee</option>
-					  <option value="EmployeeSchedule">EmployeeSchedule</option>
-					  <option value="Dish">Dish</option>
-					  <option value="Allergens">Allergens</option>
-					  <option value="Coupon">Coupon</option>
-					  <option value="OfferedCoupons">OfferedCoupons</option>
-					  <option value="Menu">Menu</option>
-					  <option value="MenuDays">MenuDays</option>
-					  <option value="MenuDishes">MenuDishes</option>
+					  <option value="find_allergens">Find allergens for dish</option>
+					  <option value="find_wage">Find employee wage</option>
 					</select>
 
 					<br>
@@ -116,7 +107,7 @@
 
 							// Create the inputs for each column of the table
 							foreach ($table_description as $column) {
-								if ($column[1] == "date") {
+								if ($row[1] == "date") {
 									echo $column[0] . ':<br><input type="date" name="' . $column[0] . '"><br>';
 								} else {
 									echo $column[0] . ':<br><input type="text" name="' . $column[0] . '"><br>';
