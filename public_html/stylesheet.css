@@ -2,6 +2,37 @@ html {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
+/*NAVIGATION BAR*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #454132;
+}
+
+li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #372F18;
+}
+
+
 .TableDisplayerBody {
 	height: 100%; 
 	margin: 0; 
@@ -54,4 +85,20 @@ html {
 
 .DataTable tr:nth-child(even) {
 	background-color: #FFFFFF;
+}
+
+.QueryForm {
+	margin: 0 0 100px 0;
+}
+
+.container {
+    position: relative;
+    width: 25%;
+}
+
+.bottomleft {
+    position: absolute;
+    bottom: 100px;
+    left: 16px;
+    font-size: 18px;
 }

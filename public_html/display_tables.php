@@ -40,6 +40,15 @@ if (!empty($_GET["_table"])) {
 	<title>Table Displayer</title>
 </head>
 <body>
+	<!--Navigation bar-->
+	<ul>
+  		<li style="font-weight: bold; font-size: 18px;">Pizza PHP</li>
+  		<li><a href="display_tables.php">Display and Insert</a></li>
+  		<li><a href="allergen.php">Find Allergens</a></li>
+  		<li><a href="franchise_hours.php">Franchise Hours</a></li>
+  		<li style="float:right">Elizabeth Conrad (ecconrad1@crimson.ua.edu)</li>
+  		<li style="float:right">Ryan Mitchell (rtmitchell2@crimson.ua.edu)</li>
+	</ul>
 	<table class="TableDisplayerBody">
 		<tr>
 			<td class="LeftColumn" valign="top">
@@ -50,17 +59,17 @@ if (!empty($_GET["_table"])) {
 
 					<!--The database selctor dropdown-->
 					<select name="_table">
-					  <option value="Franchise">Franchise</option>
-					  <option value="FranchiseSchedule">FranchiseSchedule</option>
-					  <option value="Employee">Employee</option>
-					  <option value="EmployeeSchedule">EmployeeSchedule</option>
-					  <option value="Dish">Dish</option>
-					  <option value="Allergens">Allergens</option>
-					  <option value="Coupon">Coupon</option>
-					  <option value="OfferedCoupons">OfferedCoupons</option>
-					  <option value="Menu">Menu</option>
-					  <option value="MenuDays">MenuDays</option>
-					  <option value="MenuDishes">MenuDishes</option>
+					  <option value="Franchise" <?php if($_GET["_table"] && $_GET["_table"] == "Franchise") echo 'selected="selected"'?>>Franchise</option>
+					  <option value="FranchiseSchedule" <?php if($_GET["_table"] && $_GET["_table"] == "FranchiseSchedule") echo 'selected="selected"'?>>FranchiseSchedule</option>
+					  <option value="Employee" <?php if($_GET["_table"] && $_GET["_table"] == "Employee") echo 'selected="selected"'?>>Employee</option>
+					  <option value="EmployeeSchedule" <?php if($_GET["_table"] && $_GET["_table"] == "EmployeeSchedule") echo 'selected="selected"'?>>EmployeeSchedule</option>
+					  <option value="Dish" <?php if($_GET["_table"] && $_GET["_table"] == "Dish") echo 'selected="selected"'?>>Dish</option>
+					  <option value="Allergens" <?php if($_GET["_table"] && $_GET["_table"] == "Allergens") echo 'selected="selected"'?>>Allergens</option>
+					  <option value="Coupon" <?php if($_GET["_table"] && $_GET["_table"] == "Coupon") echo 'selected="selected"'?>>Coupon</option>
+					  <option value="OfferedCoupons" <?php if($_GET["_table"] && $_GET["_table"] == "OfferedCoupons") echo 'selected="selected"'?>>OfferedCoupons</option>
+					  <option value="Menu" <?php if($_GET["_table"] && $_GET["_table"] == "Menu") echo 'selected="selected"'?>>Menu</option>
+					  <option value="MenuDays" <?php if($_GET["_table"] && $_GET["_table"] == "MenuDays") echo 'selected="selected"'?>>MenuDays</option>
+					  <option value="MenuDishes" <?php if($_GET["_table"] && $_GET["_table"] == "MenuDishes") echo 'selected="selected"'?>>MenuDishes</option>
 					</select>
 
 					<br><br> <input type="submit" value="Submit">
@@ -119,6 +128,8 @@ if (!empty($_GET["_table"])) {
 						foreach ($table_description as $column) {
 							if ($column[1] == "date") {
 								echo $column[0] . ':<br><input type="date" name="' . $column[0] . '"><br>';
+							} else if ($column[1] == "time") {
+								echo $column[0] . ':<br><input type="time" name="' . $column[0] . '"><br>';
 							} else {
 								echo $column[0] . ':<br><input type="text" name="' . $column[0] . '"><br>';
 							}
