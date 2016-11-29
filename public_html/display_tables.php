@@ -89,10 +89,10 @@ if (!empty($_GET["_table"])) {
 							$sql_columns = "";
 
 							// Concat the submitted values of each colum into the insert query
-							$isFirst = TRUE;
+							$isFirst = true;
 							foreach ($table_description as $column) {
 								if ($isFirst) {
-									$isFirst = FALSE;
+									$isFirst = false;
 								} else {
 									$sql_values .= ", ";
 									$sql_columns .= ", ";
@@ -128,6 +128,16 @@ if (!empty($_GET["_table"])) {
 						foreach ($table_description as $column) {
 							if ($column[1] == "date") {
 								echo $column[0] . ':<br><input type="date" name="' . $column[0] . '"><br>';
+							} else if (strpos($column[0], "day") !== false) {
+								echo 'Day:<br><select name="' . $column[0] . '">';
+							  	echo '<option value="Sun">Sunday</option>';
+							  	echo '<option value="Mon">Monday</option>';
+							  	echo '<option value="Tue">Tuesday</option>';
+							  	echo '<option value="Wed">Wednesday</option>';
+							  	echo '<option value="Thr">Thursday</option>';
+							  	echo '<option value="Fri">Friday</option>';
+							  	echo '<option value="Sat">Saturday</option>';
+						  		echo '</select><br>';
 							} else if ($column[1] == "time") {
 								echo $column[0] . ':<br><input type="time" name="' . $column[0] . '"><br>';
 							} else {

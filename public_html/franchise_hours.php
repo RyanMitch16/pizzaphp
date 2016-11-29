@@ -39,30 +39,23 @@
 			<td class="LeftColumn" valign="top">
 				<!--Find hours and address of certain franchise-->
 				<form class="QueryForm" method="get">
-					<?php 	
-							$allergens= array();
-							$result = mysql_query("SELECT DISTINCT aname FROM Allergens");
-							if (!$result) {
-								die ("Query failed:" . mysql_error ());
-							}
+					<h3>Find Franchises Open During Range</h3>
+					<p>(At least one field must filled out)</p>
 
-							while ($allergen = mysql_fetch_array($result)) {
-								array_push($allergens, $allergen);
-							}
-							// Write the heading 
-							echo "<h3>Find Franchises Open During Range</h3>";
-							echo "<p>(At least one field must filled out)</p>";
+					Day:<br><select name="_day" >
+					  		<option value="Sun">Sunday</option>
+					  		<option value="Mon">Monday</option>
+					  		<option value="Tue">Tuesday</option>
+					  		<option value="Wed">Wednesday</option>
+					  		<option value="Thr">Thursday</option>
+					  		<option value="Fri">Friday</option>
+					  		<option value="Sat">Saturday</option>
+				  		</select>
 
-							// Create the inputs for each column of the table
+					<br>Opening time:<br><input type="time" name="_start"><br>
+					<br>Closing time:<br><input type="time" name="_end"><br>
 
-							echo 'Day:<br><input type="text" name="_day"><br>';
-							echo '<br>Opening time:<br><input type="time" name="_start"><br>';
-							echo '<br>Closing time:<br><input type="time" name="_end"><br>';
-
-							// Create the submit button
-							echo '<br><br><input style="margin-right:20px;" type="submit" value="Query">';
-
-					?>
+					<br><br><input style="margin-right:20px;" type="submit" value="Query">
 				</form>
 			</td>
 
@@ -96,10 +89,10 @@
 							echo "</tr>";
 
 							// Get the data from the sql query
-							$query = "SELECT * FROM Franchise, FranchiseSchedule WHERE Franchise.franchise_id=FranchiseSchedule.franchise_id";
+							$query = "SELECT * FROM Franchise RIGHT JOIN FranchiseSchedule ON Franchise.franchise_id=FranchiseSchedule.franchise_id WHERE";
 							if($_GET["_day"]) {
 								echo $_GET["_day"];
-								$query .= ' AND fs_day="' . $_GET["_day"] . '"';
+								$query .= ' fs_day="' . $_GET["_day"] . '"';
 							}
 							if($_GET["_start"] && $_GET["_end"]) {
 								$query .= " AND fs_start_hour >= '" . $_GET["_start"] . "' AND fs_end_hour <= '" . $_GET["_end"] . "'";
