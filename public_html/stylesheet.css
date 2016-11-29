@@ -48,10 +48,10 @@ html {
 	width: 150px;
 }
 
-.DataTableRow {
+.DataTable tr {
 	background-color: #FFEECE;
 }
 
-.DataTableRow:nth-child(even) {
+.DataTable tr:nth-child(even) {
 	background-color: #FFFFFF;
 }

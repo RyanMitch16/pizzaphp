@@ -136,38 +136,99 @@ if (!empty($_GET["_table"])) {
 
 			<!-- Display the selected table -->
 			<td class="RightColumn" valign="top">
-				<?php 
-				if (!empty($_GET["_table"])) {
+				<div style="height: calc(100% - 120px)">
+					<?php
 
-				// Write the heading
-				echo "<h1>Displaying the " . $_GET["_table"] . " table</h1>";
-				echo "<div display:table>";
+					if (!empty($_GET["_select"]) && !empty($_GET["_table"])) {
 
-				// Create the headers of the table
-				echo '<table class="DataTable"> <tr>';
-				foreach ($table_description as $column) {
-					echo "<th>" . $column[0] . "</th>";
-				}
-				echo "</tr>";
+						// Build the SQL query
+						$query = "SELECT " . $_GET["_select"] . " FROM " . $_GET["_table"];
+						if (!empty($_GET["_where"])) {
+							$query .= " WHERE " . $_GET["_where"];
+						}
 
-				// Get the data from the sql query
-				$result = mysql_query("SELECT * FROM " . $_GET["_table"]);
-				if (!result2) {
-					die("Query failed:" . mysql_error());
-				}
+						$result = mysql_query($query);
+						if (!$result) {
+							die("Query failed:" . mysql_error());
+						}
 
-				// Enter the data into the table 
-				while ($row = mysql_fetch_array($result)) {
-					echo "<tr class='DataTableRow'>";
-					foreach ($table_description as $column) {
-						echo "<td>" . $row[$column[0]] . "</td>";
+						// Write the heading
+						echo "<h3>Displaying the result from the query: " . $query . " </h3>";	
+
+						// Create the headers of the table
+						echo '<table class="DataTable"> <tr>';
+						foreach ($table_description as $column) {
+							echo "<th>" . $column[0] . "</th>";
+						}
+						echo "</tr>";
+
+						// Enter the data into the table 
+						while ($row = mysql_fetch_array($result)) {
+							echo "<tr class='DataTableRow'>";
+							foreach ($table_description as $column) {
+								echo "<td>" . $row[$column[0]] . "</td>";
+							}
+							echo "</tr>";
+						}
+
+						echo "</table></div>";
+
+					} else if (!empty($_GET["_table"])) {
+
+						// Write the heading
+						echo "<h1>Displaying the " . $_GET["_table"] . " table</h1>";
+
+						// Create the headers of the table
+						echo '<table class="DataTable"> <tr>';
+						foreach ($table_description as $column) {
+							echo "<th>" . $column[0] . "</th>";
+						}
+						echo "</tr>";
+
+						// Get the data from the sql query
+						$result = mysql_query("SELECT * FROM " . $_GET["_table"]);
+						if (!$result) {
+							die("Query failed:" . mysql_error());
+						}
+
+						// Enter the data into the table 
+						while ($row = mysql_fetch_array($result)) {
+							echo "<tr class='DataTableRow'>";
+							foreach ($table_description as $column) {
+								echo "<td>" . $row[$column[0]] . "</td>";
+							}
+							echo "</tr>";
+						}
+
+						echo "</table></div>";
 					}
-					echo "</tr>";
-				}
-
-				echo "</table></div>";
-				}
-				?>
+					?>
+				</div>
+				<div style="background-color: #FFFFFF; height: 120px; padding: 10px;">
+					<form>
+						<p> Enter an SQL query to execute on the database: </p>
+						<div>
+							<!--<div style="float: left" style="padding:0; margin:0;">-->
+							SELECT <input type="text" name="_select" style="width: 20%; "></textarea>
+							FROM <select name="_table" >
+								  <option value="Franchise">Franchise</option>
+								  <option value="FranchiseSchedule">FranchiseSchedule</option>
+								  <option value="Employee">Employee</option>
+								  <option value="EmployeeSchedule">EmployeeSchedule</option>
+								  <option value="Dish">Dish</option>
+								  <option value="Allergens">Allergens</option>
+								  <option value="Coupon">Coupon</option>
+								  <option value="OfferedCoupons">OfferedCoupons</option>
+								  <option value="Menu">Menu</option>
+								  <option value="MenuDays">MenuDays</option>
+								  <option value="MenuDishes">MenuDishes</option>
+								</select>
+							<br>
+							WHERE <input type="text" name="_where" style="width:50%";"></textarea>
+						</div>
+						<br><input type="submit" value="Submit">
+					</form>
+				</div>
 			</td>
 		</tr>
 	</table>
