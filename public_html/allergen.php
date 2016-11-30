@@ -75,6 +75,8 @@
 
 							// Create the submit button
 							echo '<br><br><input style="margin-right:20px;" type="submit" value="Query">';
+
+							echo'<br><br><p>The allergen dropdown only contains unique allergens that exist in the allergen table. If a new allergen is added or an allergen is removed, the dropdown will be updated.</p>';
 					?>
 				</form>
 			</td>
